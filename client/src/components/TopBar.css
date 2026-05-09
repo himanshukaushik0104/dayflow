@@ -1,0 +1,59 @@
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--color-surface);
+  border-bottom: 0.5px solid var(--color-border);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.topbar__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 64px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.topbar__brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 6px;
+}
+.topbar__brand:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+.topbar__logo {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+/* In dark mode, invert the dark "DayFlow" wordmark so it stays readable.
+   The teal mark uses lightness 50%-ish, so hue-rotate(180) flips it
+   and we counter that to keep teal teal. Result: black → white,
+   teal → teal. */
+[data-theme='dark'] .topbar__logo {
+  filter: invert(1) hue-rotate(180deg);
+}
+.topbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.topbar__avatar {
+  display: inline-flex;
+  border-radius: 50%;
+  outline-offset: 3px;
+}
+.topbar__avatar:focus-visible {
+  outline: 2px solid var(--color-primary);
+}
+
+@media (max-width: 600px) {
+  .topbar__inner { height: 60px; padding: 0 16px; }
+  .topbar__logo { height: 35px; }
+}

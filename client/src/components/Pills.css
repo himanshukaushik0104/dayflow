@@ -1,0 +1,18 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.pill-cat--work    { background: var(--pill-work-bg);    color: var(--pill-work-fg); }
+.pill-cat--health  { background: var(--pill-health-bg);  color: var(--pill-health-fg); }
+.pill-cat--personal{ background: var(--pill-personal-bg);color: var(--pill-personal-fg); }
+
+.pill-type--routine{ background: var(--pill-routine-bg); color: var(--pill-routine-fg); }
+.pill-type--task   { background: var(--pill-task-bg);    color: var(--pill-task-fg); }

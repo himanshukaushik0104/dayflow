@@ -1,0 +1,206 @@
+/* Auth pages — Login / Signup / Forgot / Reset.
+   Mobile: a full-width centered form.
+   Desktop: a 2-column split-card with the green hero on the left
+   and the form on the right. */
+
+.auth-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 980px;
+  border: 0.5px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-surface-container-lowest);
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+@media (min-width: 769px) {
+  .auth-card {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.auth-hero {
+  display: none;
+  position: relative;
+  padding: 40px;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  overflow: hidden;
+}
+/* Workspace photo blended into the brand color, Stitch-style. The
+   ::before sits beneath the decorative shapes and text but on top of
+   the brand color, so the panel reads as teal with photographic depth. */
+.auth-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/auth-hero-bg.jpg') 85% center / cover no-repeat;
+  mix-blend-mode: overlay;
+  opacity: 0.45;
+  pointer-events: none;
+}
+@media (min-width: 769px) {
+  .auth-hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 520px;
+  }
+}
+.auth-hero__title {
+  margin: 0 0 16px;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  position: relative;
+  z-index: 1;
+}
+.auth-hero__body {
+  margin: 0;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+  max-width: 380px;
+  color: var(--color-primary-fixed);
+  position: relative;
+  z-index: 1;
+}
+.auth-hero__shape-1,
+.auth-hero__shape-2 {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.auth-hero__shape-1 {
+  bottom: -80px;
+  right: -80px;
+  width: 320px;
+  height: 320px;
+  background: var(--color-primary-container);
+  opacity: 0.25;
+}
+.auth-hero__shape-2 {
+  top: 32px;
+  left: 32px;
+  width: 56px;
+  height: 56px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.auth-form-pane {
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media (min-width: 769px) {
+  .auth-form-pane {
+    padding: 48px 40px;
+  }
+}
+
+.auth-title {
+  margin: 0 0 4px;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.auth-subtitle {
+  margin: 0 0 20px;
+  font-size: 16px;
+  color: var(--color-text-muted);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-row-spread {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px;
+}
+.auth-link {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: var(--color-border);
+}
+
+.auth-foot {
+  margin: 24px 0 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+.auth-foot a {
+  color: var(--color-primary);
+  font-weight: 500;
+  text-decoration: none;
+}
+.auth-foot a:hover {
+  text-decoration: underline;
+}
+
+.auth-google {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  height: 36px;
+  border-radius: 8px;
+  border: 0.5px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-weight: 500;
+  font-size: 14px;
+  transition: background 120ms ease, transform 120ms ease;
+}
+.auth-google:hover:not(:disabled) {
+  background: var(--color-surface-container-low);
+}
+.auth-google:active:not(:disabled) {
+  transform: scale(0.98);
+}
+.auth-google__glyph {
+  width: 18px;
+  height: 18px;
+}

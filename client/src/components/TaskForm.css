@@ -1,0 +1,49 @@
+/* Popover-style card anchored to bottom-right of the viewport, sitting
+   above the FAB. Stitch's mobile pattern. */
+.task-form {
+  position: fixed;
+  right: 20px;
+  bottom: calc(96px + env(safe-area-inset-bottom));
+  z-index: 40;
+  width: min(320px, calc(100vw - 40px));
+  background: var(--color-surface);
+  border: 0.5px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-pop);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: task-form-in 160ms ease-out;
+}
+@keyframes task-form-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (min-width: 769px) {
+  .task-form {
+    right: 40px;
+    bottom: 112px;
+    width: 360px;
+  }
+}
+
+.task-form__title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+.task-form__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.task-form__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+.task-form__actions .btn {
+  flex: 1;
+}

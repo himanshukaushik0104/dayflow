@@ -1,0 +1,20 @@
+{
+  "name": "dayflow",
+  "version": "0.1.0",
+  "private": true,
+  "description": "DayFlow — daily routine tracker with unified timeline",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev:client": "npm --workspace client run dev",
+    "dev:server": "npm --workspace server run dev",
+    "dev": "npm-run-all --parallel dev:client dev:server",
+    "build:client": "npm --workspace client run build",
+    "build:server": "npm --workspace server run build"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}

@@ -1,0 +1,36 @@
+.progress-card {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.progress-card__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.progress-card__label {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+.progress-card__count {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+.progress-card__track {
+  height: 6px;
+  width: 100%;
+  background: var(--color-track);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.progress-card__bar {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: 999px;
+  transition: width 200ms ease;
+}

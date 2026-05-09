@@ -1,0 +1,276 @@
+/* DayFlow theme — full Material 3 palette pulled from the Stitch
+   exports. All component CSS must consume these vars; never hardcode
+   hex codes. */
+
+:root,
+[data-theme='light'] {
+  /* Tonal surfaces (light) */
+  --color-bg: #f5fbf5;                 /* background */
+  --color-surface: #f5fbf5;            /* surface */
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #eff5ef;
+  --color-surface-container: #eaefea;
+  --color-surface-container-high: #e4eae4;
+  --color-surface-container-highest: #dee4de;
+
+  /* Foreground */
+  --color-text: #171d1a;               /* on-surface / on-background */
+  --color-text-muted: #3d4943;         /* on-surface-variant */
+  --color-border: #bccac1;             /* outline-variant */
+  --color-border-strong: #6d7a73;      /* outline */
+
+  /* Primary (teal) */
+  --color-primary: #00694c;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #008560;
+  --color-on-primary-container: #f5fff7;
+  --color-primary-fixed: #86f8c9;
+  --color-primary-fixed-dim: #68dbae;
+  --color-on-primary-fixed: #002115;
+  --color-on-primary-fixed-variant: #00513a;
+
+  /* Secondary (indigo, used for routine-purple per spec) */
+  --color-secondary: #584fbc;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #958dff;
+  --color-on-secondary-container: #2b1c8f;
+  --color-secondary-fixed: #e3dfff;
+  --color-secondary-fixed-dim: #c5c0ff;
+
+  /* Tertiary (terracotta, used for Work category) */
+  --color-tertiary: #993f3a;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #b85751;
+  --color-on-tertiary-container: #fffbff;
+  --color-tertiary-fixed: #ffdad6;
+  --color-tertiary-fixed-dim: #ffb3ad;
+  --color-on-tertiary-fixed-variant: #7e2a27;
+
+  /* Error */
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+
+  /* Aliases used throughout the app */
+  --color-routine: var(--color-primary);
+  --color-routine-soft: var(--color-primary-fixed);
+  --color-task: var(--color-secondary);
+  --color-task-soft: var(--color-secondary-fixed);
+  --color-track: var(--color-surface-container-high);
+  --color-danger: var(--color-error);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-pop: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+  /* Category pills (Stitch tokens) */
+  --pill-work-bg: var(--color-tertiary-fixed);
+  --pill-work-fg: var(--color-tertiary);
+  --pill-health-bg: var(--color-surface-container-high);
+  --pill-health-fg: var(--color-primary);
+  --pill-personal-bg: var(--color-secondary-fixed);
+  --pill-personal-fg: var(--color-on-secondary-container);
+
+  /* Type pills */
+  --pill-routine-bg: var(--color-primary-fixed);
+  --pill-routine-fg: var(--color-on-primary-fixed-variant);
+  --pill-task-bg: var(--color-secondary-fixed-dim);
+  --pill-task-fg: var(--color-on-secondary-container);
+}
+
+[data-theme='dark'] {
+  --color-bg: #d6dbd6;                 /* surface-dim — dim base, not pure black */
+  --color-surface: #d6dbd6;
+  --color-surface-container-lowest: #1a1a1a;
+  --color-surface-container-low: #1f1f1f;
+  --color-surface-container: #232323;
+  --color-surface-container-high: #2a2a2a;
+  --color-surface-container-highest: #313131;
+
+  /* Stitch's dark mode actually uses warm charcoal tones with primary-fixed-dim
+     pops — but to keep readable contrast we use a dim-on-dim pattern. */
+  --color-bg: #0f0f0f;
+  --color-surface: #1a1a1a;
+  --color-surface-container-low: #1f1f1f;
+  --color-surface-container: #232323;
+  --color-surface-container-high: #2a2a2a;
+  --color-surface-container-highest: #313131;
+
+  --color-text: #f5f5f5;
+  --color-text-muted: #a0a0a0;
+  --color-border: #333333;
+  --color-border-strong: #4a4a4a;
+
+  /* Primary brightens to primary-fixed-dim in dark for legibility (matches Stitch). */
+  --color-primary: #68dbae;
+  --color-on-primary: #002115;
+  --color-primary-container: #008560;
+  --color-on-primary-container: #86f8c9;
+  --color-primary-fixed: #1f3a2d;
+  --color-primary-fixed-dim: #163528;
+  --color-on-primary-fixed: #86f8c9;
+  --color-on-primary-fixed-variant: #68dbae;
+
+  --color-secondary: #c5c0ff;
+  --color-on-secondary: #140067;
+  --color-secondary-container: #3f35a3;
+  --color-on-secondary-container: #e3dfff;
+  --color-secondary-fixed: #2a2643;
+  --color-secondary-fixed-dim: #3a3460;
+
+  --color-tertiary: #ffb3ad;
+  --color-on-tertiary: #410003;
+  --color-tertiary-container: #b85751;
+  --color-on-tertiary-container: #fffbff;
+  --color-tertiary-fixed: #2d1614;
+  --color-tertiary-fixed-dim: #4a2522;
+
+  --color-error: #e57670;
+  --color-error-container: #4a1717;
+
+  --color-routine: var(--color-primary);
+  --color-routine-soft: var(--color-primary-fixed);
+  --color-task: var(--color-secondary);
+  --color-task-soft: var(--color-secondary-fixed);
+  --color-track: var(--color-surface-container-high);
+  --color-danger: var(--color-error);
+  --shadow-card: none;
+  --shadow-pop: 0 8px 24px rgba(0, 0, 0, 0.4);
+
+  --pill-work-bg: var(--color-tertiary-container);
+  --pill-work-fg: var(--color-on-tertiary-container);
+  --pill-health-bg: var(--color-surface-container-highest);
+  --pill-health-fg: var(--color-primary);
+  --pill-personal-bg: var(--color-secondary-fixed);
+  --pill-personal-fg: var(--color-on-secondary-container);
+
+  --pill-routine-bg: var(--color-primary-container);
+  --pill-routine-fg: var(--color-on-primary-container);
+  --pill-task-bg: var(--color-secondary-container);
+  --pill-task-fg: var(--color-on-secondary-container);
+}
+
+/* Reset + base ------------------------------------------------------ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, #root { margin: 0; height: 100%; }
+
+body {
+  font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button { font-family: inherit; font-size: inherit; cursor: pointer; }
+a { color: inherit; }
+input, textarea, select, button { font-family: inherit; color: inherit; }
+
+/* Inputs ------------------------------------------------------------ */
+.input {
+  height: 36px;
+  width: 100%;
+  padding: 0 12px;
+  background: var(--color-surface-container-lowest);
+  color: var(--color-text);
+  border: 0.5px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  outline: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+.input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-fixed);
+}
+.input::placeholder {
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.field-label {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  padding: 0 4px;
+}
+
+/* Buttons ----------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 8px;
+  border: 0.5px solid transparent;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  background: transparent;
+  color: var(--color-text);
+  transition: opacity 120ms ease, background 120ms ease, transform 120ms ease;
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border-color: var(--color-primary);
+}
+.btn-primary:hover:not(:disabled) {
+  opacity: 0.9;
+}
+.btn-secondary {
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  border-color: var(--color-border);
+}
+.btn-secondary:hover:not(:disabled) {
+  background: var(--color-surface-container-low);
+}
+.btn-block { width: 100%; }
+
+/* Cards ------------------------------------------------------------- */
+.card {
+  background: var(--color-surface);
+  border: 0.5px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: var(--color-border);
+}
+
+.error-text {
+  font-size: 14px;
+  color: var(--color-danger);
+}

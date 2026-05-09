@@ -1,0 +1,30 @@
+.fab {
+  position: fixed;
+  right: 20px;
+  bottom: calc(80px + env(safe-area-inset-bottom));
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  z-index: 35;
+  transition: opacity 120ms ease, transform 120ms ease;
+}
+.fab:hover {
+  opacity: 0.9;
+}
+.fab:active {
+  transform: scale(0.95);
+}
+
+@media (min-width: 769px) {
+  .fab {
+    right: 40px;
+    bottom: 32px;
+  }
+}

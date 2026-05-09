@@ -1,0 +1,27 @@
+.routine-form {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.routine-form__title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+.routine-form__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.routine-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 4px;
+}
+@media (max-width: 480px) {
+  .routine-form__grid {
+    grid-template-columns: 1fr;
+  }
+}

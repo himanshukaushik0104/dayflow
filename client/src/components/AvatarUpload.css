@@ -1,0 +1,60 @@
+.avatar-upload {
+  display: inline-block;
+}
+.avatar-upload__btn {
+  position: relative;
+  appearance: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.avatar-upload__btn:focus-visible {
+  outline: 2px solid var(--color-routine);
+  outline-offset: 3px;
+}
+.avatar-upload__overlay {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--color-routine);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+.avatar-upload__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+.avatar-upload__spinner {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.35);
+}
+.avatar-upload__spinner::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 -11px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  border-top-color: transparent;
+  animation: au-spin 700ms linear infinite;
+}
+@keyframes au-spin {
+  to { transform: rotate(360deg); }
+}
