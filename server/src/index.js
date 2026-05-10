@@ -7,6 +7,7 @@ import profileRouter from './routes/profile.js';
 import routineRouter from './routes/routine.js';
 import completionsRouter from './routes/completions.js';
 import tasksRouter from './routes/tasks.js';
+import streakRouter from './routes/streak.js';
 
 const app = express();
 const port = Number(process.env.PORT) || 8080;
@@ -22,6 +23,7 @@ app.use('/api/profile', profileRouter);
 app.use('/api/routine', routineRouter);
 app.use('/api/completions', completionsRouter);
 app.use('/api/tasks', tasksRouter);
+app.use('/api/streak', streakRouter);
 
 app.use((req, res) => res.status(404).json({ error: 'Not found' }));
 

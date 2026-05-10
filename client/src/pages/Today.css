@@ -10,7 +10,11 @@
 .today__head {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 2px;
+}
+.today__head > .streak-badge {
+  margin-top: 8px;
 }
 .today__title {
   margin: 0;

@@ -6,6 +6,7 @@ import { useToast } from '../hooks/useToast.jsx';
 import Layout from '../components/Layout.jsx';
 import MobileTabs from '../components/MobileTabs.jsx';
 import ProgressCard from '../components/ProgressCard.jsx';
+import StreakBadge from '../components/StreakBadge.jsx';
 import TimelineItem from '../components/TimelineItem.jsx';
 import TaskForm from '../components/TaskForm.jsx';
 import Fab from '../components/Fab.jsx';
@@ -50,22 +51,34 @@ export default function Today() {
   const [routines, setRoutines] = useState([]);
   const [completed, setCompleted] = useState(new Set());
   const [tasks, setTasks] = useState([]);
+  const [streak, setStreak] = useState(0);
   const [loading, setLoading] = useState(true);
   const [adding, setAdding] = useState(false);
   const [editingTaskId, setEditingTaskId] = useState(null);
 
+  const refreshStreak = useCallback(async () => {
+    try {
+      const res = await apiGet(`/api/streak?date=${date}`);
+      setStreak(res.streak ?? 0);
+    } catch {
+      // Streak is non-critical; don't surface a toast for it.
+    }
+  }, [date]);
+
   const load = useCallback(async () => {
     try {
-      const [prof, slots, comps, tks] = await Promise.all([
+      const [prof, slots, comps, tks, str] = await Promise.all([
         apiGet('/api/profile'),
         apiGet('/api/routine'),
         apiGet(`/api/completions/${date}`),
         apiGet(`/api/tasks/${date}`),
+        apiGet(`/api/streak?date=${date}`),
       ]);
       setProfile(prof);
       setRoutines(slots);
       setCompleted(new Set(comps.slot_ids));
       setTasks(tks);
+      setStreak(str.streak ?? 0);
     } catch (err) {
       toast.error(err.message || 'Could not load today');
     } finally {
@@ -120,6 +133,7 @@ export default function Today() {
     });
     try {
       await apiPost('/api/completions', { date, slot_id: slotId, completed: next });
+      refreshStreak();
     } catch (err) {
       setCompleted((prev) => {
         const copy = new Set(prev);
@@ -135,6 +149,7 @@ export default function Today() {
     setTasks((prev) => prev.map((t) => (t.id === taskId ? { ...t, done: next } : t)));
     try {
       await apiPut(`/api/tasks/${taskId}`, { done: next });
+      refreshStreak();
     } catch (err) {
       setTasks((prev) => prev.map((t) => (t.id === taskId ? { ...t, done: !next } : t)));
       toast.error(err.message || 'Could not update');
@@ -146,6 +161,7 @@ export default function Today() {
     setTasks((prev) => [...prev, created]);
     setAdding(false);
     toast.success('Task added');
+    refreshStreak();
   };
 
   const handleEditTask = async (taskId, payload) => {
@@ -153,6 +169,7 @@ export default function Today() {
     setTasks((prev) => prev.map((t) => (t.id === taskId ? updated : t)));
     setEditingTaskId(null);
     toast.success('Task updated');
+    refreshStreak();
   };
 
   const handleDeleteTask = async (taskId) => {
@@ -162,6 +179,7 @@ export default function Today() {
     try {
       await apiDelete(`/api/tasks/${taskId}`);
       toast.success('Task deleted');
+      refreshStreak();
     } catch (err) {
       setTasks(snapshot);
       toast.error(err.message || 'Could not delete');
@@ -176,6 +194,7 @@ export default function Today() {
         <header className="today__head">
           <h1 className="today__title">Today</h1>
           <p className="today__subtitle">{formatLongDate(date)}</p>
+          <StreakBadge count={streak} />
         </header>
 
         <ProgressCard done={totals.doneCount} total={totals.total} />
