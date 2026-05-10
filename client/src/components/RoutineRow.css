@@ -79,6 +79,21 @@
 
 .routine-row__cat {
   display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.routine-row__every-day {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: var(--color-surface-container-high);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
 }
 
 .routine-row__actions {

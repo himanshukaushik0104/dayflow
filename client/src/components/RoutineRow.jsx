@@ -44,6 +44,9 @@ export default function RoutineRow({
         {slot.note && <div className="routine-row__note">{slot.note}</div>}
       </div>
       <span className="routine-row__cat">
+        {slot.day_of_week === null && (
+          <span className="routine-row__every-day">Every day</span>
+        )}
         <CategoryPill category={slot.category} />
       </span>
       <span className="routine-row__actions">

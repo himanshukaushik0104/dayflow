@@ -17,3 +17,21 @@ export function formatLongDate(isoDate) {
     day: 'numeric',
   });
 }
+
+// Day-of-week as 0=Sun … 6=Sat (matches JS Date.getDay()).
+export function dayOfWeekFor(isoDate) {
+  const [y, m, d] = isoDate.split('-').map(Number);
+  return new Date(y, m - 1, d).getDay();
+}
+
+// UI ordering for the weekday tabs — Mon-first, Sunday at the end —
+// stored as { value: 0..6, short, long }.
+export const WEEKDAYS = [
+  { value: 1, short: 'Mon', long: 'Monday' },
+  { value: 2, short: 'Tue', long: 'Tuesday' },
+  { value: 3, short: 'Wed', long: 'Wednesday' },
+  { value: 4, short: 'Thu', long: 'Thursday' },
+  { value: 5, short: 'Fri', long: 'Friday' },
+  { value: 6, short: 'Sat', long: 'Saturday' },
+  { value: 0, short: 'Sun', long: 'Sunday' },
+];

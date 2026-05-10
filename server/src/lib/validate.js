@@ -16,6 +16,7 @@ export const isTime = (v) => typeof v === 'string' && TIME_RE.test(v);
 export const isDate = (v) => typeof v === 'string' && DATE_RE.test(v);
 export const isCategory = (v) => CATEGORIES.has(v);
 export const isTheme = (v) => THEMES.has(v);
+export const isDayOfWeek = (v) => Number.isInteger(v) && v >= 0 && v <= 6;
 
 export function requireString(value, field, { max = 500 } = {}) {
   if (typeof value !== 'string' || value.trim() === '') {

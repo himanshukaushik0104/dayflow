@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { apiGet, apiPost, apiPut, apiDelete } from '../lib/api.js';
-import { todayLocal, formatLongDate } from '../lib/dates.js';
+import { todayLocal, formatLongDate, dayOfWeekFor } from '../lib/dates.js';
 import { useToast } from '../hooks/useToast.jsx';
 import Layout from '../components/Layout.jsx';
 import MobileTabs from '../components/MobileTabs.jsx';
@@ -67,9 +67,10 @@ export default function Today() {
 
   const load = useCallback(async () => {
     try {
+      const dow = dayOfWeekFor(date);
       const [prof, slots, comps, tks, str] = await Promise.all([
         apiGet('/api/profile'),
-        apiGet('/api/routine'),
+        apiGet(`/api/routine?day=${dow}`),
         apiGet(`/api/completions/${date}`),
         apiGet(`/api/tasks/${date}`),
         apiGet(`/api/streak?date=${date}`),
